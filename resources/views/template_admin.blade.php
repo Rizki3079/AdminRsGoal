@@ -114,25 +114,29 @@
                             </span>
                             <h4 class="text-section">Navigasi</h4>
                         </li>
+                        @role('userPendonor')
                         <li class="nav-item  {{ Request::is('app-admin/blood*') ? 'active' : '' }}">
                             <a href="{{ url('app-admin/blood') }}">
                             <i class="fas fa-medkit"></i>
                                 <p>Stok Darah</p>
                             </a>
                         </li>
+                        @endrole
+                        @role('adminPmi')
                         <li class="nav-item  {{ Request::is('app-admin/agenda*') ? 'active' : '' }}">
                             <a href="{{ url('app-admin/agenda') }}">
                                 <i class="fas fa-th-large"></i>
                                 <p>Agenda Donor</p>
                             </a>
                         </li>
-                        @can('admin')
-                        {{-- <li class="nav-item  {{ Request::is('app-admin/laporan*') ? 'active' : '' }}">
+                        @endrole
+                        @role('adminRs')
+                        <li class="nav-item  {{ Request::is('app-admin/laporan*') ? 'active' : '' }}">
                             <a href="{{ url('app-admin/laporan') }}">
                                 <i class="nav-icon fas fa-list"></i>
                                 <p>Laporan</p>
                             </a>
-                        </li> --}}
+                        </li>
                         <li class="nav-item">
 							<a data-toggle="collapse" href="#submenu">
 								<i class="fas fa-bars"></i>
@@ -175,7 +179,7 @@
                             </a>
                         </li>
                         
-                        @endcan
+                        @endrole
                     </ul>
                 </div>
             </div>

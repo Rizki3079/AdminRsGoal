@@ -16,7 +16,7 @@ Route::get("/login", [AdminController::class, 'login'])->name('login')->middlewa
 Route::post('/login', [AuthController::class, 'login'])->name('proccess-login');
 
 //login
-Route::middleware('auth')->group(function(){
+Route::group(['middleware' => ['role:adminRs|adminPmi|userPendonor']], function () {
     Route::get("/app-admin/create-admin", [AdminController::class, 'create_admin']);
     Route::post("/app-admin/process-login", [AdminController::class, 'process_login']);
     Route::get("/app-admin/dashboard", [AdminController::class, 'dashboard']);
